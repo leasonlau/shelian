@@ -1,0 +1,11 @@
+﻿$(function(){
+	$(".tree_root>a").eq(0).toggle(
+		function(){
+			$(this).find(".tree_root").eq(0).show();
+alert("ok");			
+		},
+		function(){
+			$(this).find(".tree_root").eq(0).hide(); 
+		}
+	)
+})

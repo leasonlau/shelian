@@ -1,0 +1,53 @@
+<%= form_for(@star, :html => {:multipart => true}) do |f| %>
+  <% if @star.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@star.errors.count, "error") %> prohibited this star from being saved:</h2>
+
+      <ul>
+      <% @star.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :照片 %><br />
+    <%= f.file_field :photo %><br />
+  </div>
+  <div class="field">
+    <%= f.label :范围 %><br />
+    <%= f.select :area, ['社联之星','社团之星'] %>
+  </div>
+  <div class="field">
+    <%= f.label :姓名 %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :部门 %><br />
+    <%= f.text_field :department %>
+  </div>
+  <div class="field">
+    <%= f.label :职位 %><br />
+    <%= f.text_field :position %>
+  </div>
+  <div class="field">
+    <%= f.label :联系方式 %><br />
+    <%= f.text_field :contact %>
+  </div>
+  <div class="field">
+    <%= f.label :所属学院 %><br />
+    <%= f.text_field :institute %>
+  </div>
+  <div class="field">
+    <%= f.label :座右铭 %><br />
+    <%= f.text_field :motto %>
+  </div>
+  <div class="field">
+    <%= f.label :详细介绍 %><br />
+    <%= f.kindeditor :detail %>
+  </div>
+  <div class="actions">
+    <%= f.submit "发布"%>
+  </div>
+<% end %>

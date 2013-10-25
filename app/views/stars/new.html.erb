@@ -1,0 +1,13 @@
+<%= stylesheet_link_tag  "model", :media => "all" %>
+<div id="body">
+  <div class="inner_body">
+		<%= link_to '返回', :back %>
+		<%= link_to '查看社联之星', aboutshelians_star_path %>
+		<%= link_to '查看社团之星', aboutshetuans_star_path %>
+
+		<h2>新增 社联|社团 之星</h2>
+
+		<%= render 'form' %>
+
+  </div>
+</div>

@@ -1,0 +1,244 @@
+<%= stylesheet_link_tag  "home_page_style", :media => "all" %>
+<%= javascript_include_tag "home_page_app" %>
+<% provide :title, "首页" %>
+<div id="body">
+  <div class="inner_body">
+    <div class="main_pic_show">
+      <%= image_tag @album.photos.last.photo_file, :width => "960px", :height => "300px" if @album and @album.photos.exists? %>
+    </div>
+    <div class="content">
+      <div class="pic_content_box">
+        <div class="left">
+          <div class="right">
+            <div class="center">
+              <div class="see_pic_por">
+                <div class="show_portal">
+                <% if @events.exists? %>
+                  <%= link_to image_tag(@events.first.photo.url(:index_big), :id => "show", :alt => "pic", :width => "560px", :height => "400px"), @events.first, :id => "main_pic_link" %>
+                  <div class="pic_info">
+                    <div class="pic_info_bg"></div>
+                    <div class="pic_info_content">
+                      <%= link_to @events.first.title, @events_shelian.first, :id => "main_link" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="pic_row">
+                  <%= image_tag "row.jpg", :alt => "row", :id => "left_row", :style => "margin-top:30px;" %>
+                </div>
+                <div class="pic_menu">
+                  <ul>
+                    <% i = 1 %>
+                    <% @events.each do |event| %>
+                    <li>
+                      <img src="<%= event.photo.url(:index_small) %>" target_src="<%= event.photo.url(:index_big) %>" js_num="<%= i %>" alt="pic" />
+                      <div class="pic_info">
+                        <div class="pic_info_bg"></div>
+                        <div class="pic_info_content">
+                          <%= link_to event.title, event %>
+                        </div>
+                      </div>
+                    </li>
+                    <% i = i+1 %>
+                    <% end %>
+                  </ul>
+                <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text_content_box">
+        <ul class="text_news_box_list">
+          <li>
+            <div class="small_box">
+              <div class="s_box_left">
+                <div class="s_box_right">
+                  <div class="s_box_center">
+                    <div class="box_title">
+                      <span class="the_title normal_font">
+                        <%= link_to "社联新闻", articles_path %>
+                      </span>
+                    </div>
+                    <div class="the_content">
+                      <ul>
+                        <% @articles.each do |article| %>
+                        <li>
+                          <%= link_to article.title[0..13], article, :title => article.title %><%= '...' if article.title.size >14 %>
+                          <span class="date"><%= article.created_at.strftime("%m月%d日") %></span>
+                        </li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="small_box">
+              <div class="s_box_left">
+                <div class="s_box_right">
+                  <div class="s_box_center">
+                    <div class="box_title">
+                      <span class="the_title normal_font">
+                        <%= link_to "通知公告", notices_path %>
+                      </span>
+                    </div>
+                    <div class="the_content">
+                      <ul>
+                        <% @notices.each do |notice| %>
+                        <li>
+                          <%= link_to notice.title[0..13], notice, :title => notice.title %><%= '...' if notice.title.size >14 %>
+                          <span class="date"><%= notice.created_at.strftime("%m月%d日") %></span>
+                        </li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li style="margin-right:0;">
+            <div class="small_box">
+              <div class="s_box_left">
+                <div class="s_box_right">
+                  <div class="s_box_center">
+                    <div class="box_title">
+                      <span class="the_title normal_font">
+                        <%= link_to "社团新闻", periodicals_path %>
+                      </span>
+                    </div>
+                    <div class="the_content">
+                      <ul>
+                        <% @periodicals.each do |periodical| %>
+                        <li>
+                          <%= link_to periodical.name[0..13], periodical, :title => periodical.name %><%= '...' if periodical.name.size >14 %>
+                          <span class="date"><%= periodical.created_at.strftime("%m月%d日") %></span>
+                        </li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="Clear"></div>
+        <ul class="text_news_box_list">
+          <li>
+            <div class="small_box">
+              <div class="s_box_left">
+                <div class="s_box_right">
+                  <div class="s_box_center">
+                    <div class="box_title">
+                      <span class="the_title normal_font">
+                        <%= link_to "社联活动", events_path %>
+                      </span>
+                    </div>
+                    <div class="the_content">
+                      <ul>
+                        <% @events_shelian.each do |event| %>
+                        <li>
+                          [<%= event.kind %>]<%= link_to event.title[0..9], event, :title => event.title %><%= '...' if event.title.size >10 %>
+                          <span class="date"><%= event.created_at.strftime("%m月%d日") %></span>
+                        </li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="small_box">
+              <div class="s_box_left">
+                <div class="s_box_right">
+                  <div class="s_box_center">
+                    <div class="box_title">
+                      <span class="the_title normal_font">
+                        <%= link_to "校园活动", events_path %>
+                      </span>
+                    </div>
+                    <div class="the_content">
+                      <ul>
+                        <% @events_xiaoyuan.each do |event| %>
+                        <li>
+                          [<%= event.kind %>]<%= link_to event.title[0..10], event, :title => event.title %><%= '...' if event.title.size >10 %>
+                          <span class="date"><%= event.created_at.strftime("%m月%d日") %></span>
+                        </li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li style="margin-right:0;">
+            <div class="small_box">
+              <div class="s_box_left">
+                <div class="s_box_right">
+                  <div class="s_box_center">
+                    <div class="box_title">
+                      <span class="the_title normal_font">
+                        <%= link_to "社联视频", videos_path %>
+                      </span>
+                    </div>
+                    <div class="the_content video_link">
+                      <% if @video %>
+                      <%= link_to image_tag(@video.screenshot.url(:index_small), :style => "width:240px; height:150px; margin-left: 2px;" ), @video %>
+                      <div class="title_bg"></div>
+                      <div class="video_title">
+                        <%= @video.name[0..17] %><%= '...' if @video.name.size >18 %>
+                      </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="Clear"></div>
+      </div>
+      <div class="pic_slide_box">
+        <div class="m_box_left">
+          <div class="m_box_right">
+            <div class="m_box_center">
+              <div class="slide_content">
+                <div class="slide_row">
+                  <div class="left_row"></div>
+                </div>
+                <div class="slide_pic_list">
+                  <div class="action_item" style="margin-left:0px;">
+                    <ul class="list1">
+                      <% @photos.each do |photo| %>
+                      <li>
+                        <%= link_to image_tag(photo.photo_file.url(:intro)), album_photos_path(photo.album) %>
+                      </li>
+                      <% end %>
+                    </ul>
+                    <ul class="list2">
+                      <% @photos.each do |photo| %>
+                      <li>
+                        <%= link_to image_tag(photo.photo_file.url(:intro)), album_photos_path(photo.album) %>
+                      </li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+                <div class="slide_row">
+                  <div class="right_row"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

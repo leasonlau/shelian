@@ -1,0 +1,33 @@
+<%= form_for(@periodical) do |f| %>
+  <% if @periodical.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@periodical.errors.count, "error") %> prohibited this periodical from being saved:</h2>
+
+      <ul>
+      <% @periodical.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :社团 %><br />
+    <%= f.text_field :unit %>
+  </div>
+  <div class="field">
+    <%= f.label :标题 %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :作者 %><br />
+    <%= f.text_field :author %>
+  </div>
+  <div class="field">
+    <%= f.label :正文 %><br />
+    <%= f.kindeditor :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit "发布"%>
+  </div>
+<% end %>

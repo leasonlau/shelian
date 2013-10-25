@@ -1,0 +1,15 @@
+<div class="head_body">
+	<p class="main_title">
+		影音中心
+	</p>
+	<div class="web_map">
+    <%= link_to "首页", root_path %>
+		<span class="map_go">>></span>
+    <%= link_to "影音中心", albums_path %>
+		<span class="map_go">>></span>
+    <%= @album.name %>
+		<% if admin_signed_in? %>
+			(<span class="load"><%= link_to '上传图片', new_album_photo_path(@album) %></span>)
+		<% end %>
+	</div>
+</div>

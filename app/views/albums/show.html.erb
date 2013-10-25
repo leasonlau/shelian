@@ -1,0 +1,17 @@
+<%= stylesheet_link_tag  "model", :media => "all" %>
+<%= stylesheet_link_tag  "model_1", :media => "all" %>
+<% provide :title, "影音中心" %>
+<div id="body">
+	<div class="inner_body">
+		<%= render 'head_body' %>
+		<div class="left_body">
+			<div class="content">
+	    <p><%= link_to image_tag(@album.photos.first.photo_file.url(:intro)), album_photos_path(@album) if @album.photos.exists? %></p>
+	    <p><%= link_to @album.name, album_photos_path(@album) %></p>
+	    <p><%= @album.photos.count %>张</p>
+			</div>
+		</div>
+		<%= render 'albums/right_body' %>
+		<div class="Clear"></div>
+	</div>
+</div>

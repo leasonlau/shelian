@@ -1,0 +1,58 @@
+<% @excellent_shetuans = Aboutshetuan.where(:is_excellent => '1') %>
+<div class="right_body">
+  <ul class="menu">
+    <li class="tree_root">
+      <a href="/aboutshetuans">
+        <span class="font_row">&lt;</span>
+        社团列表
+      </a>
+      <ul class="tree_menu">
+        <li class="<%= 'active' if params[:controller] == 'aboutshetuans' and params[:action] == 'index' %>">
+          <a href="/aboutshetuans">
+            <span class="font_row">&lt;</span>
+            全部
+          </a>
+        </li>
+        <li class="<%= 'active' if params[:controller] == 'aboutshetuans' and params[:action] == 'show_kind' and params[:kind] == '社会公益类' %>">
+          <a href="/aboutshetuans/kind/社会公益类">
+            <span class="font_row">&lt;</span>  
+            社会公益类
+          </a>
+        </li>
+        <li class="<%= 'active' if params[:controller] == 'aboutshetuans' and params[:action] == 'show_kind' and params[:kind] == '体育运动类' %>">
+          <a href="/aboutshetuans/kind/体育运动类">
+            <span class="font_row">&lt;</span>
+            体育运动类
+          </a>
+        </li>
+        <li class="<%= 'active' if params[:controller] == 'aboutshetuans' and params[:action] == 'show_kind' and params[:kind] == '文艺特长类' %>">
+          <a href="/aboutshetuans/kind/文艺特长类">
+            <span class="font_row">&lt;</span>
+            文艺特长类
+          </a>
+        </li>
+        <li class="<%= 'active' if params[:controller] == 'aboutshetuans' and params[:action] == 'show_kind' and params[:kind] == '应用实践类' %>">
+          <a href="/aboutshetuans/kind/应用实践类">
+            <span class="font_row">&lt;</span>
+            应用实践类
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="<%= 'active' if params[:controller] == 'aboutshetuans' and params[:action] == 'star' %>">
+      <%= link_to "社团之星", aboutshetuans_star_path %>
+    </li>
+    <li class="tree_root">
+      <a>
+        优秀社团
+      </a>
+      <ul class="tree_menu">
+        <% @excellent_shetuans.each do |shetuan| %>
+        <li>
+          <%= link_to shetuan.name, shetuan %>
+        </li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+</div>

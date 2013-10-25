@@ -1,0 +1,18 @@
+<%= stylesheet_link_tag  "model", :media => "all" %>
+<%= stylesheet_link_tag  "model_1", :media => "all" %>
+<div id="body">
+	<div class="inner_body">
+		<h2>Album:<%= @album.name %></h2>
+		<h3>Photo:<%= @photo.description %></h3>
+		</br>
+		<p id="notice"><%= notice %></p>
+
+		<%= link_to image_tag(@photo.photo_file.url(:index_big).to_s), album_photo_path(@album,@photo) %>
+		</br>
+		<% if admin_signed_in? %>
+			<%= link_to "Delete Photo", album_photo_path(@album, @photo), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn' %> |
+			<%= link_to 'Back', album_photos_path %>
+		<% end %>
+		<div class="Clear"></div>
+	</div>
+</div>

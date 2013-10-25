@@ -1,0 +1,79 @@
+<div class="right_body">
+	<ul class="menu">
+		<li class="<%= 'active' if (params[:controller] == 'aboutshelians' and params[:action] == 'index') or (params[:controller] == 'aboutshelians' and params[:action] == 'theme' and params[:theme] == '社联章程') %>">
+			<a href="/aboutshelians/theme/社联章程">
+				<span class="font_row">&lt;</span>
+				社联章程
+			</a>
+		</li>
+		<li class="tree_root">
+			<a>部门职能</a>
+			<ul class="tree_menu">
+				<li class="<%= 'active' if params[:controller] == 'aboutshelians' and params[:action] == 'theme' and params[:theme] == '主席团' %>">
+					<a href="/aboutshelians/theme/主席团">
+						<span class="font_row">&lt;</span>
+						主席团
+					</a>
+				</li>
+				<li class="<%= 'active' if params[:controller] == 'aboutshelians' and params[:action] == 'theme' and params[:theme] == '秘书处' %>">
+					<a href="/aboutshelians/theme/秘书处">
+						<span class="font_row">&lt;</span>	
+						秘书处
+					</a>
+				</li>
+				<li class="<%= 'active' if params[:controller] == 'aboutshelians' and params[:action] == 'theme' and params[:theme] == '督导处' %>">
+					<a href="/aboutshelians/theme/督导处">
+						<span class="font_row">&lt;</span>
+						督导处
+					</a>
+				</li>
+				<li class="<%= 'active' if params[:controller] == 'aboutshelians' and params[:action] == 'theme' and params[:theme] == '外联部' %>">
+					<a href="/aboutshelians/theme/外联部">
+						<span class="font_row">&lt;</span>
+						外联部
+					</a>
+				</li>
+				<li class="<%= 'active' if params[:controller] == 'aboutshelians' and params[:action] == 'theme' and params[:theme] == '内务部' %>">
+					<a href="/aboutshelians/theme/内务部">
+						<span class="font_row">&lt;</span>
+						内务部
+					</a>
+				</li>
+				<li class="<%= 'active' if params[:controller] == 'aboutshelians' and params[:action] == 'theme' and params[:theme] == '宣传部' %>">
+					<a href="/aboutshelians/theme/宣传部">
+						<span class="font_row">&lt;</span>
+						宣传部
+					</a>
+				</li>
+				<li class="<%= 'active' if params[:controller] == 'aboutshelians' and params[:action] == 'theme' and params[:theme] == '策划部' %>">
+					<a href="/aboutshelians/theme/策划部">
+						<span class="font_row">&lt;</span>
+						策划部
+					</a>
+				</li>
+				<li class="<%= 'active' if params[:controller] == 'aboutshelians' and params[:action] == 'theme' and params[:theme] == '新闻部' %>">
+					<a href="/aboutshelians/theme/新闻部">
+						<span class="font_row">&lt;</span>
+						新闻部
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li class="<%= 'active' if params[:controller] == 'aboutshelians' and params[:action] == 'theme' and params[:theme] == '社联骨干' %>">
+			<a href="/aboutshelians/theme/社联骨干">
+			<span class="font_row">&lt;</span>
+			社联骨干
+		</li>
+		<li class="<%= 'active' if params[:controller] == 'aboutshelians' and params[:action] == 'star' %>">
+			<a href="/aboutshelians/star">
+			<span class="font_row">&lt;</span>
+			社联之星
+		</li>
+		<li class="<%= 'active' if params[:controller] == 'aboutshelians' and params[:action] == 'theme' and params[:theme] == '工作流程' %>">
+			<a href="/aboutshelians/theme/工作流程">
+			<span class="font_row">&lt;</span>
+			工作流程
+		</a>
+		</li>
+	</ul>
+</div>

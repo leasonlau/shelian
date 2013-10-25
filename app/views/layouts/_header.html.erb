@@ -1,0 +1,107 @@
+<div id="head">
+  <div class="inner_head">
+    <%= image_tag "logo.png", :alt => "logo" %>
+    <ul class="nav_menu">
+      <li class="<%= 'active' if params[:controller] == 'home' %>">
+        <%= link_to "首页", root_path %>
+      </li>
+      <li class="CardKey <%= 'active' if params[:controller] == 'articles'||params[:controller] == 'notices'||params[:controller] == 'periodicals' %>" cardcontent="#card_1">
+        <%= link_to "新闻中心", articles_path %>
+        <div class="news_hover CardTarget hover_item" id="card_1">
+          <span class="top_row">◆</span>
+          <ul>
+            <li>
+              <%= link_to "社联新闻", articles_path %>
+            </li>
+            <li class="temp">
+              <%= link_to "通知公告", notices_path %>
+            </li>
+            <li>
+              <%= link_to "电子期刊", periodicals_path %>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="CardKey <%= 'active' if params[:controller] == 'aboutshelians' %>" cardcontent="#card_2" >
+        <%= link_to "关于社联", aboutshelians_path %>
+        <div class="about1_hover CardTarget hover_item" id="card_2">
+          <span class="top_row">◆</span>
+          <ul>
+            <li>
+              <%= link_to "社联章程", aboutshelians_path %>
+            </li>
+            <li>
+              <%= link_to "部门职能", aboutshelians_theme_path('主席团') %>
+            </li>
+            <li>
+              <%= link_to "社联骨干", aboutshelians_theme_path('社联骨干') %>
+            </li>
+            <li>
+              <%= link_to "社联之星", aboutshelians_star_path %>
+            </li>
+            <li>
+              <%= link_to "工作流程", aboutshelians_theme_path('工作流程') %>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="CardKey <%= 'active' if params[:controller] == 'aboutshetuans' %>" cardcontent="#card_3">
+        <%= link_to "关于社团", aboutshetuans_path %>
+        <div class="about2_hover CardTarget hover_item" id="card_3">
+          <span class="top_row">◆</span>
+          <ul>
+            <li>
+              <%= link_to "社团列表", aboutshetuans_path %>
+            </li>
+            <li>
+              <%= link_to "社团之星", aboutshetuans_star_path %>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="CardKey <%= 'active' if params[:controller] == 'events' %>"  cardcontent="#card_4">
+        <%= link_to "活动中心", events_path %>
+        <div class="act_hover CardTarget hover_item" id="card_4">
+          <span class="top_row">◆</span>
+          <ul>
+            <li>
+              <%= link_to "社联活动", events_area_path('社联活动') %>
+            </li>
+            <li>
+              <%= link_to "校园活动", events_area_path('校园活动') %>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="CardKey <%= 'active' if params[:controller] == 'albums'||params[:controller] == 'photos'||params[:controller] == 'videos' %>"  cardcontent="#card_5">
+        <%= link_to "影音中心", albums_path %>
+        <div class="act_hover CardTarget hover_item" id="card_5">
+          <span class="top_row">◆</span>
+          <ul>
+            <li>
+              <%= link_to "相册", albums_path %>
+            </li>
+            <li>
+              <%= link_to "视频", videos_path %>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="<%= 'active' if params[:controller] == 'downloads' %>">
+        <%= link_to "下载中心", downloads_path %>
+      </li>
+    </ul>
+<!--     <div class="search_box">
+      <ul class="search_list">
+        <li class="s_list_l"></li>
+        <li class="s_list_c">
+          <input type="text" id="search_input" />
+        </li>
+        <li class="s_list_r">
+          <input type="submit" value="" />
+        </li>
+      </ul>
+    </div>
+ -->    <div class="Clear"></div>
+  </div>
+</div>

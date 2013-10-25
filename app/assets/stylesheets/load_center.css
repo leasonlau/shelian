@@ -1,0 +1,17 @@
+﻿.right_body .menu li a{
+	font-size:14px!important;
+}
+.load_main{
+	font-size:14px;
+}
+.load_main .load_counter{
+	float:right;
+	font-size:12px;
+	margin-right:20px;
+}
+.load_href{
+	font-size:12px;
+}
+.content ul li{
+	margin-bottom:20px;
+}

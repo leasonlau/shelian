@@ -1,0 +1,23 @@
+<div class="head_body">
+	<p class="main_title">
+		下载中心
+	</p>
+	<div class="web_map">
+		<%= link_to "首页", root_path %>
+		<span class="map_go">>></span>
+		<%= link_to "下载中心", downloads_path %>
+    <% if params[:controller] == 'downloads' and params[:action] == 'index' %>
+			<span class="map_go">>></span>
+			全部
+		<% elsif params[:controller] == 'downloads' and params[:action] == 'index' and params[:kind] == '成立社团相关' %>
+			<span class="map_go">>></span>
+			<%= link_to "成立社团相关", downloads_kind_path %>
+		<% elsif params[:controller] == 'downloads' and params[:action] == 'index' and params[:kind] == '社团事务相关' %>
+			<span class="map_go">>></span>
+			<%= link_to "社团事务相关", downloads_kind_path %>
+		<% elsif params[:controller] == 'downloads' and params[:action] == 'index' and params[:kind] == '场地借用相关' %>
+			<span class="map_go">>></span>
+			<%= link_to "场地借用相关", downloads_kind_path %>
+		<% end %>
+	</div>
+</div>

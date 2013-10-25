@@ -1,0 +1,56 @@
+<div class="head_body">
+	<p class="main_title">
+		关于社联
+	</p>
+	<div class="web_map">
+    <%= link_to "首页", root_path %>
+		<span class="map_go">>></span>
+    <%= link_to "关于社联", aboutshelians_path %>
+	    <% if admin_signed_in? %>
+	      (<span class="load"><%= link_to '新增文章', new_aboutshelian_path %></span>)
+	    <% end %>
+    <% if params[:controller] == 'aboutshelians' and params[:action] == 'star' %>
+			<span class="map_go">>></span>
+			社联之星
+	    <% if admin_signed_in? %>
+	      (<span class="load"><%= link_to '新增社联之星', new_star_path %></span>)
+	    <% end %>
+		<% elsif params[:controller] == 'aboutshelians' %>
+			<span class="map_go">>></span>
+			社联章程
+		<% elsif params[:controller] == 'aboutshelians' and params[:action] == 'star' and params[:theme] == '社联章程' %>
+			<span class="map_go">>></span>
+			社联章程
+		<% elsif params[:controller] == 'aboutshelians' and params[:action] == 'star' and params[:theme] == '主席团' %>
+			<span class="map_go">>></span>
+			主席团
+		<% elsif params[:controller] == 'aboutshelians' and params[:action] == 'star' and params[:theme] == '秘书处' %>
+			<span class="map_go">>></span>
+			秘书处
+		<% elsif params[:controller] == 'aboutshelians' and params[:action] == 'star' and params[:theme] == '督导处' %>
+			<span class="map_go">>></span>
+			督导处
+		<% elsif params[:controller] == 'aboutshelians' and params[:action] == 'star' and params[:theme] == '外联部' %>
+			<span class="map_go">>></span>
+			外联部
+		<% elsif params[:controller] == 'aboutshelians' and params[:action] == 'star' and params[:theme] == '内务部' %>
+			<span class="map_go">>></span>
+			内务部
+		<% elsif params[:controller] == 'aboutshelians' and params[:action] == 'star' and params[:theme] == '宣传部' %>
+			<span class="map_go">>></span>
+			宣传部
+		<% elsif params[:controller] == 'aboutshelians' and params[:action] == 'star' and params[:theme] == '策划部' %>
+			<span class="map_go">>></span>
+			策划部
+		<% elsif params[:controller] == 'aboutshelians' and params[:action] == 'star' and params[:theme] == '新闻部' %>
+			<span class="map_go">>></span>
+			新闻部
+		<% elsif params[:controller] == 'aboutshelians' and params[:action] == 'star' and params[:theme] == '社联骨干' %>
+			<span class="map_go">>></span>
+			社联骨干
+		<% elsif params[:controller] == 'aboutshelians' and params[:action] == 'star' and params[:theme] == '工作流程' %>
+			<span class="map_go">>></span>
+			工作流程
+		<% end %>
+	</div>
+</div>

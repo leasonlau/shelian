@@ -1,0 +1,22 @@
+<div class="left_menu">
+  <ul>
+    <li class="<%= 'active' if params[:controller] == 'events' and params[:action] == 'index' %>">
+      <%= link_to "全部", events_path %>
+    </li>
+    <li class="<%= 'active' if params[:controller] == 'events' and params[:action] == 'show_kind' and params[:kind] == '讲座沙龙' %>">
+      <%= link_to "讲座沙龙", events_kind_path('讲座沙龙') %>
+    </li>
+    <li class="<%= 'active' if params[:controller] == 'events' and params[:action] == 'show_kind' and params[:kind] == '校园文化' %>">
+      <%= link_to "校园文化", events_kind_path('校园文化') %>
+    </li>
+    <li class="<%= 'active' if params[:controller] == 'events' and params[:action] == 'show_kind' and params[:kind] == '竞赛创新' %>">
+      <%= link_to "竞赛创新", events_kind_path('竞赛创新') %>
+    </li>
+    <li class="<%= 'active' if params[:controller] == 'events' and params[:action] == 'show_kind' and params[:kind] == '实践公益' %>">
+      <%= link_to "实践公益", events_kind_path('实践公益') %>
+    </li>
+    <li class="<%= 'active' if params[:controller] == 'events' and params[:action] == 'show_kind' and params[:kind] == '其他' %>">
+      <%= link_to "其他", events_kind_path('其他') %>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,57 @@
+<%= stylesheet_link_tag  "model", :media => "all" %>
+<%= stylesheet_link_tag  "model_1", :media => "all" %>
+<%= stylesheet_link_tag  "league_list", :media => "all" %>
+<style type="text/css">
+  .pic_info{
+    width:60%!important;
+  }
+  .pic_box{
+    width: 40%!important;
+  }
+</style>
+<% provide :title, "关于社团" %>
+<div id="body">
+  <div class="inner_body">
+    <%= render 'head_body' %>
+    <div class="left_body">
+      <div class="content">
+        <ul class="league_lists">
+          <% @aboutshetuans.each do |shetuan| %>
+          <li>
+            <div class="pic_module">
+              <div class="pic_box">
+                <% if shetuan.logo? %>
+                  <%= image_tag shetuan.logo.url(:shetuan_logo), :width => "100px", :height => "100px" %>
+                <% else %>
+                  <%= image_tag "shetuan_default.jpg", :width => "100px", :height => "100px" %>
+                <% end %>
+              </div>
+              <div class="pic_info">
+                <p class="the_title">
+                  <%= link_to shetuan.name, shetuan %>
+                </p>
+                <p class="module_item">
+                  社长：<%= shetuan.president %>
+                </p>
+                <p class="module_item">
+                  类型：<%= shetuan.kind %>
+                </p>
+                <p class="module_item">
+                  成立时间：<%= shetuan.begin.strftime("%Y年") if shetuan.begin? %>
+                </p>
+              </div>
+            </div>
+          </li>
+          <% end %>
+          <div class="Clear"></div>
+          <div class="page_box">
+            <%= paginate @aboutshetuans %>
+          </div>
+        </ul>
+        <div class="Clear"></div>
+      </div>
+    </div>
+    <%= render 'right_body' %>
+    <div class="Clear"></div>
+  </div>
+</div>

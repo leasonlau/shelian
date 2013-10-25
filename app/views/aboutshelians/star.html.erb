@@ -1,0 +1,66 @@
+<%= stylesheet_link_tag  "model", :media => "all" %>
+<%= stylesheet_link_tag  "model_1", :media => "all" %>
+<% provide :title, "关于社联 | 社联之星" %>
+<style type="text/css">
+    .pic_info{
+        margin-left: 10px;
+    }
+</style>
+<div id="body">
+  <div class="inner_body">
+    <%= render 'head_body' %>
+    <div class="left_body">
+      <div class="content">
+        <ul class="star_list">
+          <% @stars.each do |star| %>
+          <li>
+            <div class="small_title">
+              <%= star.name %>
+              <% if admin_signed_in? %>
+                (<span class="load"><%= link_to '修改', edit_star_path(star) %></span>)
+              <% end %>
+            </div>
+            <div class="pic_module">
+              <div class="pic_box">
+                <%= image_tag star.photo.url(:intro), :width => "200px", :height => "140px" if star.photo? %>
+              </div>
+              <div class="pic_info">
+                <p class="module_item">
+                  姓名：<%= star.name %>
+                </p>
+                <p class="module_item">
+                  部门：<%= star.department %>
+                </p>
+                <p class="module_item">
+                  职位：<%= star.position %>
+                </p>
+                <p class="module_item">
+                  联系方式：<%= star.contact %>
+                </p>
+                <p class="module_item">
+                  学院：<%= star.institute %>
+                </p>
+                <p class="module_item">
+                  个性签名：<%= star.motto %>
+                </p>
+              </div>
+              <div class="Clear"></div>
+            </div>
+            <div class="small_title">
+              个人简介：
+            </div>
+            <div class="text_module">
+              <%= raw star.detail %>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="page_box">
+        <%= paginate @stars %>
+      </div>
+    </div>
+    <%= render 'right_body' %>
+    <div class="Clear"></div>
+  </div>
+</div>

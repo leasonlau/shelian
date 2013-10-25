@@ -1,0 +1,53 @@
+<%= form_for(@aboutshetuan, :html => {:multipart => true}) do |f| %>
+  <% if @aboutshetuan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@aboutshetuan.errors.count, "error") %> prohibited this aboutshetuan from being saved:</h2>
+
+      <ul>
+      <% @aboutshetuan.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :社团照片 %><br />
+    <%= f.file_field :logo %><br />
+  </div>
+  <div class="field">
+    <%= f.label :名称 %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :社长 %><br />
+    <%= f.text_field :president %>
+  </div>
+  <div class="field">
+    <%= f.label :联系方式 %><br />
+    <%= f.text_field :contact %>
+  </div>
+  <div class="field">
+    <%= f.label :类型 %><br />
+    <%= f.select :kind, ['社会公益类','体育运动类','文艺特长类','学术创新类','应用实践类'] %>
+  </div>
+  <div class="field">
+    <%= f.label :所属学院 %><br />
+    <%= f.text_field :institute %>
+  </div>
+  <div class="field">
+    <%= f.label :成立时间 %><br />
+    <%= f.datetime_select :begin, :start_year => 1956 %>
+  </div>
+  <div class="field">
+    <%= f.label :详细介绍 %><br />
+    <%= f.kindeditor :detail %>
+  </div>
+  <div class="field">
+    <%= f.label :设为优秀社团 %><br />
+    <%= f.check_box :is_excellent %>
+  </div>
+  <div class="actions">
+    <%= f.submit "发布"%>
+  </div>
+<% end %>

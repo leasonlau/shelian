@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag  "model", :media => "all" %>
+<%= stylesheet_link_tag  "model_1", :media => "all" %>
+<%= form_for [@album, @photo], :remote => true do %>
+<div id="body">
+	<div class="inner_body">
+	<h1>上传图片至相册:<%= @album.name %></h1>
+	<br>
+	<p id="notice"><%= notice %></p>
+
+		上传图片: 
+		<input id="fileupload" type="file" name="photo[photo_file]" multiple>
+		<%= javascript_include_tag "jquery-file-upload/jquery-1.7.1.min" %>
+		<%= javascript_include_tag "jquery-file-upload/vendor/jquery.ui.widget" %>
+		<%= javascript_include_tag "jquery-file-upload/jquery.iframe-transport" %>
+		<%= javascript_include_tag "jquery-file-upload/jquery.fileupload.js" %>
+		<script>
+		$(function () {
+		    $('#fileupload').fileupload({
+		        dataType: 'json',
+		        url: '<%= album_photos_path(@album.id) %>',
+		        done: function (e, data) {
+		            $.each(data.result, function (index, file) { 
+		               $('<li><img src="'+file.thumbnail_url+'"></li>').appendTo('#thumbs');
+		            });
+		        }
+		    });
+		});
+		</script>
+
+		</br>
+		<%= link_to '返回', albums_path %> |
+		<%= link_to '查看相册', album_photos_path(@album) %>
+		</br>
+	
+		<ul id="thumbs" class="cf">
+	<!-- json-ajax response here, see fileupload script above, .appendTo css id:"thumbs"-->
+		</ul>
+	<% end %>
+	</div>
+</div>

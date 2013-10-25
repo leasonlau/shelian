@@ -1,0 +1,24 @@
+<div class="head_body">
+  <p class="main_title">
+    新闻中心
+  </p>
+  <div class="web_map">
+    <%= link_to "首页", root_path %>
+    <span class="map_go">>></span>
+    <%= link_to "新闻中心", periodicals_path %>
+    <span class="map_go">>></span>
+    <% if params[:controller] == 'periodicals' and params[:action] == 'index' %>
+      <%= link_to "社团新闻", periodicals_path %>
+        <% if admin_signed_in? %>
+          (<span class="load"><%= link_to '发布社团新闻', new_periodical_path %></span>)
+        <% end %>
+    <% elsif params[:controller] == 'periodicals' and params[:action] == 'show' %>
+      <%= link_to "社团新闻", periodicals_path %>
+      <span class="map_go">>></span>
+      <%= @periodical.name %>
+        <% if admin_signed_in? %>
+          (<span class="load"><%= link_to '修改', edit_periodical_path %></span>)
+        <% end %>
+    <% end %>
+  </div>
+</div>

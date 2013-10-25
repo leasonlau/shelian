@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag  "model", :media => "all" %>
+<%= stylesheet_link_tag  "model_1", :media => "all" %>
+<%= stylesheet_link_tag  "news_center", :media => "all" %>
+<% provide :title, "新闻中心 | 社团新闻" %>
+<div id="body">
+  <div class="inner_body">
+    <%= render 'head_body' %>
+    <div class="left_body">
+      <ul class="news_list">
+        <% @periodicals.each do |periodical| %>
+        <li>
+          <p class="the_title">
+            <%= link_to periodical.name, periodical %>
+          </p>
+          <div class="the_text">
+            <%= raw periodical.content[0..140] %><%= '...' if periodical.content.size >140 %>
+          </div>
+          <span class="counter"><%= link_to "阅读", periodical %>（<%= periodical.views_count_s %>）</span>
+          <div class="Clear"></div>
+        </li>
+        <% end %>
+        <div class="page_box">
+          <%= paginate @periodicals %>
+        </div>
+      </ul>
+    </div>
+    <%= render 'shares/right_body' %>
+    <div class="Clear"></div>
+  </div>
+</div>

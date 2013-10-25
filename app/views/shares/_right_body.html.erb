@@ -1,0 +1,56 @@
+<% @last_articles = Article.order('created_at DESC').limit(3) %>
+
+<% @top_articles = Article.order("views_count DESC").limit(3) %>
+
+<div class="right_body">
+  <ul class="menu">
+    <li class="<%= 'active' if params[:controller] == 'articles' %>">
+      <a href="/articles">
+        <span class="font_row">&lt;</span>
+        社联新闻
+      </a>
+    </li>
+    <li class="<%= 'active' if params[:controller] == 'periodicals' %>">
+      <a href="/periodicals">
+        <span class="font_row">&lt;</span>
+        社团新闻
+      </a>
+    </li>
+    <li class="<%= 'active' if params[:controller] == 'notices' %>">
+      <a href="/notices">
+        <span class="font_row">&lt;</span>
+        通知公告
+      </a>
+    </li>
+  </ul>
+    <div class="text_box">
+      <p class="text_title">最新文章</p>
+      <ul class="text_content">
+        <% @last_articles.each do |last_article| %>
+        <li>
+          <div class="text_name">
+            <%= link_to last_article.title, last_article %>
+          </div>
+          <div class="text_date">
+            <%= last_article.created_at.strftime("%y年%m月%d日") %>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="text_box">
+      <p class="text_title">推荐文章</p>
+      <ul class="text_content">
+        <% @top_articles.each do |top_articles| %>
+        <li>
+          <div class="text_name">
+            <%= link_to top_articles.title, top_articles %>
+          </div>
+          <div class="text_date">
+            <%= top_articles.created_at.strftime("%y年%m月%d日") %>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+</div>

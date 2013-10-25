@@ -1,0 +1,28 @@
+<%= stylesheet_link_tag  "model", :media => "all" %>
+<%= stylesheet_link_tag  "model_1", :media => "all" %>
+<%= stylesheet_link_tag  "about_hkcss", :media => "all" %>
+<style type="text/css">
+	.content p{
+		font-size: 14px;
+		line-height: 2.0em;
+	}
+	.content{
+		margin-right: 20px;
+	}
+</style>
+<% provide :title, "关于社联 | "+@aboutshelian_themes.last.title if @aboutshelian_themes.last %>
+<div id="body">
+	<div class="inner_body">
+		<%= render 'head_body' %>
+		<div class="left_body">
+    <% if admin_signed_in? %>
+      <%= link_to '(修改)', edit_aboutshelian_path(@aboutshelian_themes.last) if @aboutshelian_themes.last %></span>
+    <% end %>
+			<div class="content">
+				<%= raw @aboutshelian_themes.last.content if @aboutshelian_themes.last %>
+			</div>
+		</div>
+		<%= render 'right_body' %>
+		<div class="Clear"></div>
+	</div>
+</div>

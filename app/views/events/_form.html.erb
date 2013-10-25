@@ -1,0 +1,65 @@
+<%= form_for(@event, :html => {:multipart => true}) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :活动宣传照片 %><br />
+    <%= f.file_field :photo %><br />
+  </div>
+  <div class="field">
+    <%= f.label :范围 %><br />
+    <%= f.select :area, ['社联活动','校园活动'] %>
+  </div>
+  <div class="field">
+    <%= f.label :标题 %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="select">
+    <%= f.label :类型 %><br />
+    <%= f.select :kind, ['讲座沙龙','校园文化','竞赛创新','实践公益','其他'] %>
+  </div>
+  <div class="field">
+    <%= f.label :开始时间 %><br />
+    <%= f.datetime_select :begin %>
+  </div>
+  <div class="field">
+    <%= f.label :结束时间 %><br />
+    <%= f.datetime_select :end %>
+  </div>
+  <div class="field">
+    <%= f.label :地址 %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :主办方 %><br />
+    <%= f.text_field :organizer %>
+  </div>
+  <div class="field">
+    <%= f.label :发起人 %><br />
+    <%= f.text_field :sponsor %>
+  </div>
+  <div class="field">
+    <%= f.label :联系方式 %><br />
+    <%= f.text_field :contact %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.kindeditor :content %>
+  </div>
+  <div class="field">
+    <%= f.label :展示在主页 %><br />
+    <%= f.check_box :is_index %>
+  </div>
+  <div class="actions">
+    <%= f.submit "发布"%>
+  </div>
+<% end %>

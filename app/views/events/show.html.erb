@@ -1,0 +1,85 @@
+<%= stylesheet_link_tag  "model", :media => "all" %>
+<%= stylesheet_link_tag  "model_1", :media => "all" %>
+<%= stylesheet_link_tag  "an_activity", :media => "all" %>
+<% provide :title, "活动中心 | "+@event.title %>
+<div id="body">
+  <div class="inner_body">
+    <div class="head_body">
+      <p class="main_title">
+        活动中心
+      </p>
+      <div class="web_map">
+        <%= link_to "首页", root_path %>
+        <span class="map_go">>></span>
+        <%= link_to "活动中心", events_path %>
+        <span class="map_go">>></span>
+          <%= @event.title %>
+          <% if admin_signed_in? %>
+            (<span class="load"><%= link_to '修改', edit_event_path %></span>)
+          <% end %>
+      </div>
+    </div>
+    <div class="left_body">
+      <div class="content">
+        <div class="star_list">
+            <div class="small_title">
+              <%= @event.title %>
+            </div>
+            <div class="pic_module">
+              <div class="pic_box">
+                <% if @event.photo? %>
+                  <%= image_tag @event.photo.url(:intro), :style => "width:220px;height:153px" %>
+                <% else %>
+                  <%= image_tag "event_default.jpg", :height => "154px" %>
+                <% end %>
+              </div>
+              <div class="pic_info">
+                <p class="module_item">
+                  开始时间：<%= @event.begin.strftime("%Y年%m月%d日 %H:%M") %>
+                </p>
+                <p class="module_item">
+                  截止时间：<%= @event.end.strftime("%Y年%m月%d日 %H:%M") %>
+                </p>
+                <p class="module_item">
+                  地点：<%= @event.address %>
+                </p>
+                <p class="module_item">
+                  主办方：<%= @event.organizer %>
+                </p>
+                <p class="module_item">
+                  发起人：<%= @event.sponsor %>
+                </p>
+                <p class="module_item">
+                  联系方式：<%= @event.contact %>
+                </p>
+                <p class="module_item">
+                  发起时间：<%= @event.created_at.strftime("%Y年%m月%d日") %>
+                </p>
+                <div class="date_label">
+                  <% @surplus = @event.end - Time.now %>
+                  <% if @surplus >= 0 %>
+                    <% surplus = @surplus/86400 %>
+                    <%= image_tag "label.jpg" %>
+                    <span class="date">剩余约<%= surplus.to_i %>天</span>
+                  <% else %>
+                    <%= image_tag "label_die.jpg" %>
+                    <span class="date">已结束</span>
+                  <% end %>
+                </div>
+              </div>
+              <div class="Clear"></div>
+            </div>
+            <div class="small_title">
+              活动介绍
+            </div>
+          <div class="text_module">
+            <%= raw @event.content %>
+          </div>
+        </div>
+        <%= render 'shares/baidu_share' %>
+      </div>
+    </div>
+    <%= render 'right_body' %>
+    <div class="Clear"></div>
+  </div>
+</div>

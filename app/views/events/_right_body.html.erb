@@ -1,0 +1,27 @@
+<% @top_events = Event.order("views_count DESC").limit(5) %>
+<div class="right_body">
+  <ul class="menu">
+    <li class="<%= 'active' if params[:controller] == 'events' and params[:action] == 'show_area' and params[:area] == '社联活动' %>">
+      <a href="/events/area/社联活动">
+        <span class="font_row">&lt;</span>
+        社联活动
+      </a>
+    </li>
+    <li class="<%= 'active' if params[:controller] == 'events' and params[:action] == 'show_area' and params[:area] == '校园活动' %>">
+      <a href="/events/area/校园活动">
+        <span class="font_row">&lt;</span>
+        校园活动
+      </a>
+    </li>
+  </ul>
+  <div class="text_box">
+    <p class="text_title">热门活动</p>
+    <ul class="text_content">
+      <% @top_events.each do |top_event| %>
+      <li>
+        <%= link_to top_event.title, top_event %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

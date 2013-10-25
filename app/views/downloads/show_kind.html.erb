@@ -1,0 +1,32 @@
+<%= stylesheet_link_tag  "model", :media => "all" %>
+<%= stylesheet_link_tag  "model_1", :media => "all" %>
+<%= stylesheet_link_tag  "load_center", :media => "all" %>
+<% provide :title, "下载中心" %>
+<div id="body">
+  <div class="inner_body">
+    <%= render 'head_body' %>
+    <div class="left_body">
+      <div class="content">
+        <ul>
+          <% @downloar_kinds.each do |download| %>
+          <li>
+            <div class="load_main">
+              <a href='<%= download.attachment.url %>'><%= download.description %></a>
+              <span class="load_counter"><%= download.created_at.strftime("%Y年%m月%d日") %></span>
+            </div>
+            <div class="load_href">
+              <a href='<%= download.attachment.url %>'><%= download.attachment.url %></a>
+            </div>
+          </li>
+          <% end %>
+          <div class="page_box">
+            <%= paginate @downloar_kinds %>
+          </div>
+        </ul>
+      </div>
+    </div>
+    <%= render 'right_body' %>
+    <div class="Clear"></div>
+  </div>
+</div>
+<%=%>

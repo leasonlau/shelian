@@ -1,0 +1,100 @@
+<%= stylesheet_link_tag  "model", :media => "all" %>
+<%= stylesheet_link_tag  "model_1", :media => "all" %>
+<%= stylesheet_link_tag  "about_league", :media => "all" %>
+<style type="text/css">
+  .text_module p{
+    font-size: 14px;
+    line-height: 2.0em;
+  }
+  .text_module{
+    margin-right: 20px;
+  }
+</style>
+<% provide :title, "关于社团 | "+@aboutshetuan.name %>
+<div id="body">
+  <div class="inner_body">
+    <div class="head_body">
+      <p class="main_title">
+        关于社团
+      </p>
+      <div class="web_map">
+        <%= link_to "首页", root_path %>
+        <span class="map_go">>></span>
+        <%= link_to "关于社团", aboutshetuans_path %>
+        <span class="map_go">>></span>
+        <%= @aboutshetuan.name %>
+        <% if admin_signed_in? %>
+          (<span class="load"><%= link_to '修改', edit_aboutshetuan_path %></span>)
+        <% end %>
+      </div>
+    </div>
+    <div class="left_body">
+      <div class="content">
+        <ul class="star_list">
+          <li>
+            <div class="pic_module">
+              <div class="pic_box">
+                <% if @aboutshetuan.logo? %>
+                  <%= image_tag @aboutshetuan.logo.url(:shetuan_logo), :width => "140px", :height => "140px" %>
+                <% else %>
+                  <%= image_tag "shetuan_default.jpg", :width => "140px", :height => "140px" %>
+                <% end %>
+              </div>
+              <div class="pic_info">
+                <p class="module_title">
+                  <%= @aboutshetuan.name %>
+                </p>
+                <p class="module_item">
+                  社长：<%= @aboutshetuan.president %>
+                </p>
+                <p class="module_item">
+                  联系方式：<%= @aboutshetuan.contact %>
+                </p>
+                <p class="module_item">
+                  类型：<%= @aboutshetuan.kind %>
+                </p>
+                <p class="module_item">
+                  挂靠学院：<%= @aboutshetuan.institute %>
+                </p>
+                <p class="module_item">
+                  成立时间：<%= @aboutshetuan.begin.strftime("%Y年") if @aboutshetuan.begin? %>
+                </p>
+              </div>
+              <div class="Clear"></div>
+            </div>
+            <div class="small_title">
+              简介：
+            </div>
+            <div class="text_module">
+              <%= raw @aboutshetuan.detail %>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <% @rencent_evnets = Event.order("created_at desc").where(:organizer => @aboutshetuan.name).limit(4) %>
+      <% if !@rencent_evnets.empty? %>
+        <div class="recent_activity">
+          <ul>
+            <li class="small_item_name">
+              近期活动
+            </li>
+            <% @rencent_evnets.each do |event| %>
+            <li>
+              <% if event.photo? %>
+                <%= link_to image_tag(event.photo.url(:event), :style => "width:150px;height:100px"), event %>
+              <% else %>
+                <%= link_to image_tag("event_default.jpg", :height => "154px"), event %>
+              <% end %>
+              <div class="name_bg"></div>
+              <div class="activity_name"><%= event.title %></div>
+            </li>
+            <% end %>
+          </ul>
+          <div class="Clear"></div>
+        </div>
+      <% end %>
+    </div>
+    <%= render 'right_body' %>
+    <div class="Clear"></div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<% @links = Link.all - (Link.where(:name => "联系邮箱") + Link.where(:name => "联系电话") + Link.where(:name => "联系地址") + Link.where(:name => "备案") + Link.where(:name => "域名")) %>
+<% @emails = Link.where(:name => "联系邮箱") %>
+<% @phones = Link.where(:name => "联系电话") %>
+<% @addresses = Link.where(:name => "联系地址") %>
+<% @records = Link.where(:name => "备案") %>
+<% @self_links = Link.where(:name => "域名") %>
+<div id="footer">
+  <div class="inner_footer">
+    <p>
+      友情链接:
+      <% @links.each do |link| %>
+        <a href="<%= link.address %>"><%= link.name %></a>
+      <% end %>
+    </p>
+    <p>
+      联系邮箱：<%= @emails.last.address if !@emails.empty? %>
+      联系电话：<%= @phones.last.address if !@phones.empty? %>
+    </p>
+    <p>
+      联系地址：<%= @addresses.last.address if !@addresses.empty? %>
+    </p>
+    <p>
+      互动体验中心出品 <%= @records.last.address if !@records.empty? %>
+    </p>
+    <p>
+      Copyright 2012,版权所有<%= @self_links.last.address if !@self_links.empty? %>
+    </p>
+  </div>
+</div>

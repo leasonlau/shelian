@@ -1,0 +1,2 @@
+module AboutshetuansHelper
+end

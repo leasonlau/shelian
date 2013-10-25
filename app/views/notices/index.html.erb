@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag  "model", :media => "all" %>
+<%= stylesheet_link_tag  "model_1", :media => "all" %>
+<%= stylesheet_link_tag  "news_center", :media => "all" %>
+<% provide :title, "新闻中心 | 通知公告" %>
+<div id="body">
+  <div class="inner_body">
+    <%= render 'head_body' %>
+    <div class="left_body">
+      <ul class="news_list">
+        <% @notices.each do |notice| %>
+        <li>
+          <p class="the_title">
+            <%= link_to notice.title, notice %>
+          </p>
+          <div class="the_text">
+            <%= raw notice.content[0..140] %><%= '...' if notice.content.size >140 %>
+          </div>
+          <span class="counter"><%= link_to "阅读", notice %>（<%= notice.views_count_s %>）</span>
+          <div class="Clear"></div>
+        </li>
+        <% end %>
+        <div class="page_box">
+          <%= paginate @notices %>
+        </div>
+      </ul>
+    </div>
+    <%= render 'shares/right_body' %>
+    <div class="Clear"></div>
+  </div>
+</div>

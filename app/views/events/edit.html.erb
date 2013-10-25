@@ -1,0 +1,12 @@
+<%= stylesheet_link_tag  "model", :media => "all" %>
+<div id="body">
+  <div class="inner_body">
+		<%= link_to '返回', :back %>
+		<%= link_to '查看', @event %>
+
+		<h2>修改"<%= @event.title %>"</h2>
+		
+		<%= render 'form' %>
+
+  </div>
+</div>

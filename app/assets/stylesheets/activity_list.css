@@ -1,0 +1,73 @@
+﻿.left_body .content .left_menu{
+	float:left;
+	width:9%;
+	padding-left:10px;
+	height:auto;
+	margin-top: 10px;
+}
+.left_body .content .right_content{
+	float:left;
+	width:85%;
+	height:auto;
+	border-left:2px solid #f0f0f0;
+	min-height:700px;
+	padding-bottom:20px;
+	margin-left: 20px;
+}
+.left_body .content .left_menu li{
+	height:2.4em;
+}
+.left_body .content .left_menu .active a{
+	color:#3399cc;
+}
+.left_body .content .left_menu a:hover{
+	color:#2d6987;
+}
+.left_body .content .left_menu a{
+	color:#2b2b2b;
+}
+.activity_box .pic_box{
+	float:left;
+	width:150px;
+	height:100px;
+	padding:10px;
+}
+.activity_box .pic_info{
+	float:left;
+	width:400px;
+	padding-top:10px;
+	padding-left:10px;
+}
+.activity_box{
+	border-bottom:1px dashed #f1f1f1;
+	padding-bottom:10px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.activity_box .the_title{
+	font-size:16px;
+	margin-bottom:0.4em;
+	font-family:"黑体";
+}
+.activity_box .the_item{
+	font-size:12px;
+	margin-bottom:0.4em;
+}
+.activity_box .pic_info .time_die{
+	float: right;
+	margin-top:-80px;
+}
+.activity_box .pic_info .time_die .activity_time{
+	position:absolute;
+	font-size:12px;
+	color:#000000;
+	margin-top:6px;
+	margin-left:18px;
+}
+.activity_box .pic_info .time_die .die_date{
+	color:#999999;
+	margin-left: 25px;
+}
+.text_box a{
+	color:#2b2b2b;
+}

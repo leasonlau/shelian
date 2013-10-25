@@ -1,0 +1,15 @@
+﻿.league_lists>li{
+	width:50%;
+	float:left;
+}
+.the_title{
+	font-size:16px;
+	font-weight:bold;
+	margin-top: 7px;
+	margin-bottom:0.3em;
+}
+.pic_box a{
+	border:0;
+	outline:none;
+	color:#ffffff;
+}

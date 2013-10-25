@@ -1,0 +1,62 @@
+<%= stylesheet_link_tag  "model", :media => "all" %>
+<%= stylesheet_link_tag  "model_1", :media => "all" %>
+<%= stylesheet_link_tag  "activity_list", :media => "all" %>
+<% provide :title, "活动中心" %>
+<div id="body">
+  <div class="inner_body">
+    <%= render 'head_body' %>
+    <div class="left_body" style="padding-left:0px;">
+      <div class="content">
+        <%= render 'left_menu' %>
+        <div class="right_content">
+          <% @event_kinds.each do |event| %>
+            <div class="activity_box">
+              <div class="pic_box">
+                <% if event.photo? %>
+                  <%= image_tag event.photo.url(:event), :width => "150px", :height => "100px" %>
+                <% else %>
+                  <%= image_tag "event_default.jpg", :width => "150px", :height => "100px" %>
+                <% end %>
+              </div>
+              <div class="pic_info">
+                <p class="the_title">
+                  <%= link_to event.title, event %>
+                </p>
+                <p class="the_item">
+                  <%= event.begin.strftime("%Y年%m月%d日 %H:%M") %>
+                </p>
+                <p class="the_item">
+                  <%= event.end.strftime("%Y年%m月%d日 %H:%M") %>
+                </p>
+                <p class="the_item">
+                  <%= event.address %>
+                </p>
+                <p class="the_item">
+                  主办方：<%= event.organizer %>
+                </p>
+                <div class="time_die">
+                  <% @surplus = event.end - Time.now %>
+                  <% if @surplus >= 0 %>
+                    <% surplus = @surplus/86400 %>
+                    <span class="activity_time">剩余约<%= surplus.to_i %>天</span>
+                    <%= image_tag "label.jpg" %>
+                  <% else %>
+                    <span class="activity_time  die_date">已结束</span>
+                    <%= image_tag "label_die.jpg" %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="Clear"></div>
+            </div>
+          <% end %>
+          <div class="page_box">
+            <%= paginate @event_kinds %>
+          </div>
+        </div>
+        <div class="Clear"></div>
+      </div>
+    </div>
+    <%= render 'right_body' %>
+    <div class="Clear"></div>
+  </div>
+</div>

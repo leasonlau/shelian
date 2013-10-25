@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag  "model", :media => "all" %>
+<%= stylesheet_link_tag  "model_1", :media => "all" %>
+<%= stylesheet_link_tag  "news_more", :media => "all" %>
+<% provide :title, "新闻中心 | 社团新闻 | "+@periodical.name %>
+<div id="body">
+  <div class="inner_body">
+    <%= render 'head_body' %>
+    <div class="left_body">
+      <div class="content">
+        <div class="article_title">
+          <%= @periodical.name %>
+        </div>
+        <div class="article_info">
+          <span class="info_left">
+            <span class="from">
+              来自：<%= @periodical.unit %>
+            </span>
+            <span class="author">
+              作者：<%= @periodical.author %>
+            </span>                
+          </span>
+          <span class="info_right">
+            <%= @periodical.created_at.strftime("%Y年%m月%d日 %H:%M") %> 阅读：<%= @periodical.views_count_s %>
+          </span>
+          <div class="Clear"></div>
+        </div>
+        <div class="article_text">
+          <%= raw @periodical.content %>
+        </div>
+        <div class="Clear"></div><!-- 清除上面div浮动 -->
+        <%= render 'shares/baidu_share' %>
+      </div>
+    </div>
+    <%= render 'shares/right_body' %>
+    <div class="Clear"></div>
+  </div>
+</div>

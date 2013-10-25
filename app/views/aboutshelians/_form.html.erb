@@ -1,0 +1,25 @@
+<%= form_for(@aboutshelian) do |f| %>
+  <% if @aboutshelian.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@aboutshelian.errors.count, "error") %> prohibited this aboutshelian from being saved:</h2>
+
+      <ul>
+      <% @aboutshelian.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :标题 %><br />
+    <%= f.select :title, ['社联章程','社联骨干','工作流程','主席团','秘书处','督导处','外联部','内务部','宣传部','策划部','新闻部'] %>
+  </div>
+  <div class="field">
+    <%= f.label :内容 %><br />
+    <%= f.kindeditor :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit "发布"%>
+  </div>
+<% end %>

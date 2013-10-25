@@ -1,0 +1,31 @@
+<div class="head_body">
+  <p class="main_title">
+    活动中心
+  </p>
+  <div class="web_map">
+    <%= link_to "首页", root_path %>
+    <span class="map_go">>></span>
+    <%= link_to "活动中心", events_path %>
+    <% if admin_signed_in? %>
+      (<span class="load"><%= link_to '新增活动', new_event_path %></span>)
+    <% end %>
+    <span class="map_go">>></span>
+    <% if params[:controller] == 'events' and params[:action] == 'index' %>
+      <%= link_to "全部", events_path %>      
+    <% elsif params[:controller] == 'events' and params[:action] == 'show_area' and params[:area] == '社联活动' %>
+      <%= link_to "社联活动", events_area_path('社联活动') %>
+    <% elsif params[:controller] == 'events' and params[:action] == 'show_area' and params[:area] == '校园活动' %>
+      <%= link_to "校园活动", events_area_path('校园活动') %>
+    <% elsif params[:controller] == 'events' and params[:action] == 'show_kind' and params[:kind] == '讲座沙龙' %>
+      <%= link_to "讲座沙龙", events_kind_path('讲座沙龙') %>
+    <% elsif params[:controller] == 'events' and params[:action] == 'show_kind' and params[:kind] == '校园文化' %>
+      <%= link_to "校园文化", events_kind_path('校园文化') %>
+    <% elsif params[:controller] == 'events' and params[:action] == 'show_kind' and params[:kind] == '竞赛创新' %>
+      <%= link_to "竞赛创新", events_kind_path('竞赛创新') %>
+    <% elsif params[:controller] == 'events' and params[:action] == 'show_kind' and params[:kind] == '实践公益' %>
+      <%= link_to "实践公益", events_kind_path('实践公益') %>
+    <% elsif params[:controller] == 'events' and params[:action] == 'show_kind' and params[:kind] == '其他' %>
+      <%= link_to "其他", events_kind_path('其他') %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+﻿.media_list li{
+	float:left;
+	width:232px;
+	height:140px;
+	text-align:center;
+	margin-bottom:60px;
+}
+.media_list li img{
+	width:200px;
+	height:140px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.media_list .media_time{
+	position:absolute;
+	margin-top:-25px;
+	color:#ffffff;
+	font-size:12px;
+	margin-left:25px;
+}
+.media_list .time_bg{
+	width:200px;
+	position:absolute;
+	height:30px;
+	background-color:#6c6c6c;
+	margin-top:-30px;
+	margin-left:16px;
+	opacity: .3;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)"; 
+	filter: alpha(opacity=30);
+}
+.media_list .media_info{
+	font-size:14px;
+	text-align:left;
+	margin-left:15px;
+}
+.media_list .media_info .counter{
+	font-size:12px;
+}
+.content{
+	margin-right:20px;
+}
+.media_list li a{color:#ffffff;}

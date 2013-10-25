@@ -1,0 +1,36 @@
+<%= stylesheet_link_tag  "model", :media => "all" %>
+<%= stylesheet_link_tag  "model_1", :media => "all" %>
+<%= stylesheet_link_tag  "news_center", :media => "all" %>
+<style type="text/css">
+  .content p{
+    font-size: 14px;
+    line-height: 2.0em;
+  }
+</style>
+<% provide :title, "新闻中心 | 社联新闻" %>
+<div id="body">
+  <div class="inner_body">
+    <%= render 'head_body' %>
+    <div class="left_body">
+      <ul class="news_list">
+        <% @articles.each do |article| %>
+        <li>
+          <p class="the_title">
+            <%= link_to article.title, article %>
+          </p>
+          <div class="the_text">
+            <%= raw article.content[0..140] %><%= '...' if article.content.size >140 %>
+          </div>
+          <span class="counter"><%= link_to "阅读", article %>（<%= article.views_count_s %>）</span>
+          <div class="Clear"></div>
+        </li>
+        <% end %>
+        <div class="page_box">
+          <%= paginate @articles %>
+        </div>
+      </ul>
+    </div>
+    <%= render 'shares/right_body' %>
+    <div class="Clear"></div>
+  </div>
+</div>

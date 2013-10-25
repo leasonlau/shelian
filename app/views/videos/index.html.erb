@@ -1,0 +1,34 @@
+<%= stylesheet_link_tag  "model", :media => "all" %>
+<%= stylesheet_link_tag  "model_1", :media => "all" %>
+<%= stylesheet_link_tag  "media_center", :media => "all" %>
+<% provide :title, "视频中心" %>
+<div id="body">
+	<div class="inner_body">
+		<%= render 'albums/head_body' %>
+		<div class="left_body">
+			<div class="content">
+				<ul class="media_list">
+					<% @videos.each do |video| %>
+					<li>
+						<%= link_to image_tag(video.screenshot.url(:index_small), :width => "200px", :height => "140px"  ), video %>
+						<div class="time_bg"></div>
+						<div class="media_time">
+              <%= video.name[0..13] %><%= '...' if video.name.size >14 %>
+						</div>
+						<div class="media_info">
+							<p><%= video.created_at.strftime("%Y年%m月%d日") %></p>
+							<p class="counter">播放：<%= video.views_count_s %>次</p>
+						</div>
+					</li>
+					<% end %>
+	        <div class="page_box">
+	          <%= paginate @videos %>
+	        </div>
+				</ul>
+				<div class="Clear"></div>
+			</div>
+		</div>
+		<%= render 'right_body' %>
+		<div class="Clear"></div>
+	</div>
+</div>

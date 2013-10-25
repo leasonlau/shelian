@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <meta name="description" content="电子科技大学社团联合会--电子科技大学社团联合会官方网站，提供社联新闻、通知公告、社联活动、校园活动。">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag  "page_nav", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag  "base", :media => "all" %>
+  <%= javascript_include_tag "jquery-1.7.2" %>
+</head>
+<body>
+  <div id="wrapper">
+    <!--[if IE 7]>
+      <div class="tips" style="width:100%;height:40px;font-size:16px;color:#3366cc;font-weight:bold;">
+        您的浏览器版本太低了，请升级浏览器以更好使用
+      </div>
+    <![endif]--> 
+    <!--[if IE 6]>
+      <div class="tips" style="width:100%;height:40px;font-size:16px;color:#3366cc;font-weight:bold;">
+      您的浏览器版本太低了，请升级浏览器以更好使用
+      </div>
+    <![endif]--> 
+		<%= render 'layouts/header' %>
+		<%= yield %>
+		<%= render 'layouts/footer' %>
+</div>
+</body>
+</html>
